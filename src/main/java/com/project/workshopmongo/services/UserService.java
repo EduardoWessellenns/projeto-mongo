@@ -5,6 +5,7 @@ import com.project.workshopmongo.dto.UserDTO;
 import com.project.workshopmongo.repository.UserRepository;
 import com.project.workshopmongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,11 @@ public class UserService {
 
     public User insert(User obj){
         return repo.insert(obj);
+    }
+
+    public void delete(String id){
+        findById(id);
+        repo.delete(findById(id));
     }
 
     public User fromDTO(UserDTO objDto){
